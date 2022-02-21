@@ -2,12 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <!-- 연결하기 -->
- <mapper namespace="">
- 	<select id="" resultType=""> <!-- id=메소드명을 넣어준다 resultType=model이 있는 경로를 가지고온다  -->
+ <!-- 연결하기 namespace:어디로 보낼것인지 resultType:행 하나하나가 어떤 데이터로 되어있는지-->
+ <mapper namespace="com.quiz.lesson02.dao.StoreDao">
+ 	<select id="selectStoreList" resultType="com.quiz.lesson02.model.Store"> <!-- id=메소드명을 넣어준다 resultType=model이 있는 경로를 가지고온다  -->
  		SELECT
- 			*
+ 			`id`
+			,`name`
+			,`phoneNumber`
+			,`address`
+			,`businessNumber`
+			,`introduce`
+			,`createdAt`
+			,`updatedAt`
  		FROM
- 			`store`
+ 			`store`;
  	</select>
  </mapper>
