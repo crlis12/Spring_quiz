@@ -22,5 +22,10 @@ public class RealEstateBO {
 		
 		return realEstateDAO.selectRealEstateListByRentPrice(rentPrice);
 	}
+	
+	public List<RealEstate> getRealEstateListByAreaAndPrice(int area, int price){
+		
+		return realEstateDAO.selectRealEstateListByAreaAndPrice(area, price);
+	}
 
 }

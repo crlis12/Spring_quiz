@@ -36,5 +36,26 @@
  			`rentPrice` < #{rentPrice}
  		]]>	
 	 </select>
+	 
+	 <select id="selectRealEstateListByAreaAndPrice" parameterType="map" resultType="com.quiz.lesson03.model.RealEstate">
+	 	SELECT
+ 			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 		<![CDATA[
+ 			`type` = '매매' 
+ 			AND `area` >= #{area}
+ 			AND `price` <= #{price}
+	 	]]>
+	 </select>
  </mapper>
  
