@@ -18,6 +18,7 @@ public interface RealEstateDAO {
 			@Param("area")int area,  //Param 하나의 맵으로 어노테이션 해준다 mapper에 한번에 넘겨주기 위해서 사용한다 
 			@Param("price")int price); // @PAram은 파라미터들을 amp으로 구성해준다.
 	
+	public int insertRealEstate(RealEstate realEstate);
 }
 
 

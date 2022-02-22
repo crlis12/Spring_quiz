@@ -57,5 +57,30 @@
  			AND `price` <= #{price}
 	 	]]>
 	 </select>
+	 
+	 <insert id="insertRealEstate" parameterType="com.quiz.lesson03.model.RealEstate">
+	 	INSERT INTO `real_Estate`
+	 	(
+	 		`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+	 	)
+	 	VALUES
+	 	(
+	 		#{realtorId}
+	 		, #{address}
+	 		, #{area}
+	 		, #{type}
+	 		, #{price}
+	 		, #{rentPrice}
+	 		, NOW()
+	 		, NOW()
+	 	)
+	 </insert>
  </mapper>
  

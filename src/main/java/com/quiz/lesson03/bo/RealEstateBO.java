@@ -27,5 +27,8 @@ public class RealEstateBO {
 		
 		return realEstateDAO.selectRealEstateListByAreaAndPrice(area, price);
 	}
-
+	
+	public int addRealEstate(RealEstate realEstate)	{
+		return realEstateDAO.insertRealEstate(realEstate);
+	}
 }
