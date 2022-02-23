@@ -19,6 +19,23 @@ public interface RealEstateDAO {
 			@Param("price")int price); // @PAram은 파라미터들을 amp으로 구성해준다.
 	
 	public int insertRealEstate(RealEstate realEstate);
+	
+	public int insertRealEstateAsField(
+			@Param("realtorId") int realtorId,
+			@Param("address") String address, 
+			@Param("area") int area,
+			@Param("type") String type, 
+			@Param("price") int price, 
+			@Param("rentPrice") Integer rentPrice);
+	
+	public int updateRealEstateById(
+			@Param("id") int id,
+			@Param("type") String type,
+			@Param("price") int price);
+	
+	public int deleteRealEstateById(
+			@Param("id") int id);
+	
 }
 
 
