@@ -27,7 +27,7 @@ public class Lesson03Quiz02RestController {
 		RealEstate realEstate = new RealEstate();
 		realEstate.setRealtorId(3);
 		realEstate.setAddress("푸르지용 리버 303동 1104호");
-		realEstate.setAddress("89");
+		realEstate.setArea(89);
 		realEstate.setType("매매");
 		realEstate.setPrice(100000);
 

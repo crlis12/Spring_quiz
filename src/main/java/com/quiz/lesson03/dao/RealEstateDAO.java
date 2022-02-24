@@ -26,7 +26,7 @@ public interface RealEstateDAO {
 			@Param("area") int area,
 			@Param("type") String type, 
 			@Param("price") int price, 
-			@Param("rentPrice") Integer rentPrice);
+			@Param("rentPrice") int rentPrice);
 	
 	public int updateRealEstateById(
 			@Param("id") int id,
