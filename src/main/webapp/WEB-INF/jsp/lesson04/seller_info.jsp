@@ -20,7 +20,8 @@
 	<div class="container">
 		<h1>판매자 정보</h1>
 		<img alt="이미지1" src="${seller.profileImageUrl }" width="300" height="300"><br>
-		<span class="display-2">${seller.nickname }</span>
+		<span class="display-2">${seller.nickname }</span><br>
+		<span class="text-info">${seller.temperature }</span>
 	 </div>	
 </body>
 </html>

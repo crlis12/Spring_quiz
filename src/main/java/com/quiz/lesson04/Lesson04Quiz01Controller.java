@@ -40,9 +40,18 @@ public class Lesson04Quiz01Controller {
 	
 	//문제2
 	// http://localhost/lesson04/quiz01/seller_info
+	// http://localhost/lesson04/quiz01/seller_info?id=3
 	@RequestMapping("/seller_info")
-	public String sellerInfo(Model model) {  // Model한테 seller 에서 가져온 데이터를 가지고온다
-			Seller seller = sellerBO.getLastSeller();
+	public String sellerInfo(
+			@RequestParam(value="id", required = false) Integer id,
+			Model model) {  // Model한테 seller 에서 가져온 데이터를 가지고온다
+			
+			Seller seller = null;
+			if(id == null) {
+				seller = sellerBO.getLastSeller();
+			} else {
+				seller = sellerBO.getSellerById(id);
+			}
 			model.addAttribute("seller", seller); // 가져올 키값 map형태
 			
 			
