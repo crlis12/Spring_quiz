@@ -64,7 +64,7 @@ public class Lesson05Controller {
 		member.put("point", 420);
 		membership.add(member);
 
-		model.addAttribute("musicRanking", musicRanking);
+		model.addAttribute("musicRanking", musicRanking); // 별명으로 jsp파일에서 불러오기
 		model.addAttribute("members", membership);
 
 		return "lesson05/quiz02";
