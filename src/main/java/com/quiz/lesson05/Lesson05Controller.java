@@ -1,6 +1,7 @@
 package com.quiz.lesson05;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public class Lesson05Controller {
 	@RequestMapping("/lesson05/quiz02")
 	public String quiz02(Model model) {
 
+		// 문제1
 		List<String> musicRanking = new ArrayList<>();
 		musicRanking.add("강남스타일");
 		musicRanking.add("벚꽃엔딩");
@@ -27,6 +29,7 @@ public class Lesson05Controller {
 		musicRanking.add("거짓말");
 		musicRanking.add("보고싶다");
 
+		// 문제2
 		List<Map<String, Object>> membership = new ArrayList<>();
 
 		Map<String, Object> member = new HashMap<>();
@@ -64,9 +67,52 @@ public class Lesson05Controller {
 		member.put("point", 420);
 		membership.add(member);
 
+		// 문제1
 		model.addAttribute("musicRanking", musicRanking); // 별명으로 jsp파일에서 불러오기
+		// 문제2
 		model.addAttribute("members", membership);
 
 		return "lesson05/quiz02";
+	}
+
+	@RequestMapping("/lesson05/quiz03")
+	public String quiz03(Model model) {
+		
+		// 문제 1
+		List<Integer> candidates = new ArrayList<>();
+		candidates.add(263001);
+		candidates.add(173942);
+		candidates.add(563057);
+		
+		model.addAttribute("candidates", candidates);
+		//문제 2
+		List<Map<String, Object>> cardBills = new ArrayList<>();
+
+		Map<String, Object> cardBill = new HashMap<>();
+		cardBill.put("store", "GS48");
+		cardBill.put("pay", 7800);
+		cardBill.put("date", "2025-09-14");
+		cardBill.put("installment", "일시불");
+		cardBills.add(cardBill);
+
+		cardBill = new HashMap<>();
+		cardBill.put("store", "현태백화점");
+		cardBill.put("pay", 2750000);
+		cardBill.put("date", "2025-09-18");
+		cardBill.put("installment", "3개월");
+		cardBills.add(cardBill);
+
+		cardBill = new HashMap<>();
+		cardBill.put("store", "요촌치킨");
+		cardBill.put("pay", 180000);
+		cardBill.put("date", "2025-09-20");
+		cardBill.put("installment", "일시불");
+		cardBills.add(cardBill);
+		
+		Date today = new Date();
+		
+		model.addAttribute("today", today);
+		model.addAttribute("cardBills", cardBills);
+		return "lesson05/quiz03";
 	}
 }
