@@ -73,6 +73,8 @@
 				</c:forEach>
 			</tbody>			
 		</table>
+		
+		<img src="/image/sunny.jpg" alt="사진" >
 	</div>
 </body>
 </html>
