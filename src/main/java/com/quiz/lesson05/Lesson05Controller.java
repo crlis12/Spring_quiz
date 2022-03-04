@@ -181,17 +181,6 @@ public class Lesson05Controller {
 			return "lesson05/quiz04";
 		}
 		
-		@RequestMapping("/lesson05/quiz05")
-		public String quiz05(Model model) {
-			List<WeatherHistory> weatherHistory = new ArrayList<WeatherHistory>();
-			
-			weatherHistory = watherHistoryBO.getWeatherHistoryList();
-			
-			model.addAttribute("weatherHistory", weatherHistory);
-			
-			
-			
-			return "lesson05/quiz05";
-		}
+		
 	
 }

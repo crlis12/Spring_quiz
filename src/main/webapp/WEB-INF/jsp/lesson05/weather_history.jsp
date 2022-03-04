@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
 					<li class="font-weight-bold text-white mt-2">관측 기후</li>
 				</ul>
 			</aside>
-			<section class="bg-warning col-10">
+			<section class="col-10">
 				<div>
 					<h1>과거 날씨</h1>
 					<table class="table text-center">
@@ -61,35 +62,36 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${weatherHistory}" var="weather">
-							<tr>
-								<td>${weather.date}</td>
-							<c:choose>
-								<c:when test="${weather.weather eq '맑음' }">
-									<td><img src="/image/sunny.jpg" alt="맑음"></td>
-								</c:when>
-								<c:when test="${weather.weather eq '구름조금' }">
-									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg" alt="맑음"></td>
-								</c:when>
-								<c:when test="${weather.weather eq '흐림' }">
-									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg" alt="맑음"></td>
-								</c:when>
-								<c:when test="${weather.weather eq '비' }">
-									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg" alt="맑음"></td>
-								</c:when>
-							</c:choose>
-								<td>${weather.temperatures}</td>
-								<td>${weather.precipitation}</td>
-								<td>${weather.microDust}</td>
-								<td>${weather.windSpeed}</td>
-							</tr>
-						</c:forEach>
+							<c:forEach items="${weatherHistory}" var="weather">
+								<tr>
+									<td><fmt:formatDate value="${weather.date}"
+											pattern="yyyy년 M월 d일" /></td>
+									<c:choose>
+										<c:when test="${weather.weather eq '맑음' }">
+											<td><img src="/image/sunny.jpg" alt="맑음"></td>
+										</c:when>
+										<c:when test="${weather.weather eq '구름조금' }">
+											<td><img src="/image/partlyCloudy.jpg" alt="구름조금"></td>
+										</c:when>
+										<c:when test="${weather.weather eq '흐림' }">
+											<td><img src="/image/cloudy.jpg" alt="흐림"></td>
+										</c:when>
+										<c:when test="${weather.weather eq '비' }">
+											<td><img src="/image/rainy.jpg" alt="비"></td>
+										</c:when>
+									</c:choose>
+									<td>${weather.temperatures}℃</td>
+									<td>${weather.precipitation}mm</td>
+									<td>${weather.microDust}</td>
+									<td>${weather.windSpeed}km/h</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 			</section>
 		</div>
 	</div>
-	
+
 </body>
 </html>
