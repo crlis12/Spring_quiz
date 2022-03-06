@@ -25,10 +25,10 @@ public class Lesson05Controller {
 	public String quiz01() {
 		return "lesson05/quiz01";
 	}
-
+	
 	@RequestMapping("/lesson05/quiz02")
 	public String quiz02(Model model) {
-
+		
 		// 문제1
 		List<String> musicRanking = new ArrayList<>();
 		musicRanking.add("강남스타일");
@@ -180,7 +180,4 @@ public class Lesson05Controller {
 			model.addAttribute("members", members);
 			return "lesson05/quiz04";
 		}
-		
-		
-	
 }

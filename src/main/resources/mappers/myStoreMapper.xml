@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.quiz.lesson05.dao.MystoreDAO">
+ 	<select id="selectMyStoreList" resultType="com.quiz.lesson05.model.MyStore">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`phoneNumber`
+			,`address`
+			,`businessNumber`
+			,`introduce`
+			,`createdAt`
+			,`updatedAt` 
+ 		FROM
+ 			`store`
+ 	</select>
+ 	<select id="selectmyStoreReviewById" resultType="com.quiz.lesson05.model.Review">
+ 		SELECT
+ 			`id`
+			,`storeId`
+			,`menu`
+			,`userName`
+			,`point`
+			,`review`
+			,`createdAt`
+			,`updatedAt`
+ 		FROM
+ 			`new_review`
+ 	</select>
+ 	
+ 	<select id="selectStoreById" resultType="com.quiz.lesson05.model.MyStore">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`phoneNumber`
+			,`address`
+			,`businessNumber`
+			,`introduce`
+			,`createdAt`
+			,`updatedAt` 
+ 		FROM
+ 			`store`
+ 		where
+ 			`id` = #{id}
+ 			
+ 	</select>
+ 	
+ </mapper>

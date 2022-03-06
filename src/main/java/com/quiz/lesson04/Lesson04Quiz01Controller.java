@@ -54,7 +54,6 @@ public class Lesson04Quiz01Controller {
 			}
 			model.addAttribute("seller", seller); // 가져올 키값 map형태
 			
-			
 		return "lesson04/seller_info";
 	}
 }

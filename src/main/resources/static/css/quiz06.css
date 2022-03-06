@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.storeList {
+    border-style:solid;    
+    height: 100px;
+    padding: 10px;
+    border-color: #06b0f9;
+    border-radius: 20px 20px;
+}
+
+.reviewList{
+	border-style:solid;    
+    height: 150px;
+    padding: 10px;
+    border-color: #06b0f9;
+    border-radius: 20px 20px;
+}
+
+.storeList:hover{
+	background-color: #0db4f2;
+}
+.wrap{
+	margin: auto;
+	width: 800px;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+.font_date{
+	color: gray;
+}
+
+
+
