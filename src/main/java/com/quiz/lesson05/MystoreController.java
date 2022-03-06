@@ -33,17 +33,18 @@ public class MystoreController {
 	}
 
 	@RequestMapping("/mystore_review")
-	public String getmyStoreReview(Model model,
-			@RequestParam("id")int id,
-			@RequestParam("name")String name
-			) {
+	public String getmyStoreReview(
+			Model model,
+			@RequestParam("id") int id,
+			@RequestParam("name") String name) {
+		
 		List<Review> review = new ArrayList<>();
 		MyStore mystore = null;
-		
+
 		mystore = myStoreBO.getStoreById(id, name);
-		
+
 		review = myStoreBO.getmyStoreReviewById();
-		
+
 		model.addAttribute("review", review);
 		model.addAttribute("mystore", mystore);
 

@@ -35,15 +35,15 @@
 <body>
 	
 	<div class="wrap">
-		<header class="bg-info text-center"><h1 class="text-white">배탈의 민족</h1></header>
+		<a href="/lesson05/mystore"><header class="bg-info text-center"><h1 class="text-white">배탈의 민족</h1></header></a>
 		<h1>${mystore.name }- 리뷰</h1>
 		
-		<c:forEach items="${review}" var="review">
+		<c:forEach items="${review}" var="review" varStatus="Status">
 			<c:choose>
 				<c:when test="${mystore.id eq review.storeId }">
 					<div class="reviewList mt-3 font-weight-bold">
 						${review.userName}
-						<img alt="별" src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" width="20px" height="20px" class="mb-2"><br> 
+						<img alt="별" src="/image/star_fill.png" width="20px" height="20px" class="mb-2"><br> 
 						<span class="font_date"><fmt:formatDate value="${review.createdAt}" pattern="yyyy년 M월 d일"/></span><br>
 						${review.review }<br>					
 					</div>
