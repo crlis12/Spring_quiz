@@ -31,7 +31,8 @@ public class MystoreController {
 
 		return "lesson05/mystore";
 	}
-
+	
+	// 클릭시 리뷰 출력
 	@RequestMapping("/mystore_review")
 	public String getmyStoreReview(
 			Model model,
