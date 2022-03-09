@@ -41,9 +41,10 @@
 		<div class="form-group ">
 			<label for="url">주소</label><br>
 			<div class="d-flex">
-				<input type="text" class="form-group form-control col-11" id="url">
+				<input type="text" class="form-group form-control col-11" id="url" name="url">
 				<button type="button" class="btn btn-info ml-2 h-50 btn-block" id="addressCheckBtn"> 중복 확인</button>
 			</div>
+				<small id="nameStatusArea"></small>
 		</div>
 		
 		<button type="button" id="addFavoriteBtn" class="btn btn-success btn-block">추가</button>
@@ -65,6 +66,7 @@
 					
 					if(url == ''){
 						alert("주소를 입력하세요")
+						$('#nameStatusArea').append('<span class="text-danger">주소를 입력하세요</span>')
 						return;
 					}
 					
@@ -90,7 +92,53 @@
 						}
 					});
 					
+					console.log($("#nameStatusArea").children());
+					
+					if($('#nameStatusArea').children().length < 1){
+						alert("서브밋 가능")
+					}else {
+						alert("서브밋 불가")
+						return;
+					}
+					
 				});
+				$('#addressCheckBtn').on('click', function(){
+					$('#nameStatusArea').empty();
+					
+					let url = $('#url').val().trim();
+					
+					if(url == ''){
+						$('#nameStatusArea').append('<span class="text-danger">주소를 적어주세요. </span>')
+						return;
+					}
+					if(url.startsWith("http") == false && url.startsWith("https") == false){
+						$('#nameStatusArea').append('<span class="text-danger">주소 형식이 아닙니다. </span>')
+						return;
+					}
+					
+					
+					$.ajax({
+						type: "GET"
+						, url:"/lesson06/quiz02/is_duplication"
+						, data: {"url":url}
+					
+						//response
+						,success: function(data){
+							if(data.is_duplication){
+								$('#nameStatusArea').append('<span class="text-danger">중복입니다. </span>')
+							}
+						}
+						, error: function(e){
+							alert("에러");
+						}
+					
+					});
+				});
+				
+
+				
+				// 주소 중복 검사
+				
 		});
 	</script>
 </body>
