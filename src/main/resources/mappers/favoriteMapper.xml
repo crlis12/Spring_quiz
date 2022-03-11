@@ -43,4 +43,25 @@
  		Where
  			`url` = #{url}
  	</select> 
+ 	
+ 	<select id="selectFavoriteByUrl" resultType="com.quiz.lesson06.model.Favorites">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `url`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`favorites`
+ 		Where
+ 			`url` = #{url}
+ 	</select>
+ 	
+ 	<delete id="deleteFavoriteById" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`favorites`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
  </mapper>

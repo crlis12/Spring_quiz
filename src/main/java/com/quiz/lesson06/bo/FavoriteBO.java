@@ -1,6 +1,6 @@
 package com.quiz.lesson06.bo;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +27,15 @@ public class FavoriteBO {
 	public boolean existUserByUrl(String url) {
 		
 		return favoriteDAO.existUserByUrl(url);
+	}
+	
+	public Favorites getFavoriteByUrl(String url) {
+		
+		return favoriteDAO.selectFavoriteByUrl(url);
+	}
+	
+	public int deleteFavoriteById(int id) {
+		
+		return favoriteDAO.deleteFavoriteById(id);
 	}
 }

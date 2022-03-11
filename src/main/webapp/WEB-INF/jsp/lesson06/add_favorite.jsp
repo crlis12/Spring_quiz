@@ -39,12 +39,13 @@
 			<input type="text" class="form-group form-control" id="name">
 		</div>
 		<div class="form-group ">
-			<label for="url">주소</label><br>
-			<div class="d-flex">
-				<input type="text" class="form-group form-control col-11" id="url" name="url">
-				<button type="button" class="btn btn-info ml-2 h-50 btn-block" id="addressCheckBtn"> 중복 확인</button>
+			<label for="url">URL 주소</label><br>
+			<div class="form-inline">
+				<input type="text" class="form-control col-10" id="url" name="url">
+				<button type="button" class="btn btn-info ml-3" id="checkDuplicationBin"> 중복 확인</button>
 			</div>
-				<small id="nameStatusArea"></small>
+				<small id="duplicationText" class="text-danger d-none">중복된 URL입니다.</small>
+				<small id="availableUrlText" class="text-success d-none">저정 가능한 URL입니다.</small>
 		</div>
 		
 		<button type="button" id="addFavoriteBtn" class="btn btn-success btn-block">추가</button>
@@ -92,53 +93,45 @@
 						}
 					});
 					
-					console.log($("#nameStatusArea").children());
-					
-					if($('#nameStatusArea').children().length < 1){
-						alert("서브밋 가능")
-					}else {
-						alert("서브밋 불가")
-						return;
-					}
-					
 				});
-				$('#addressCheckBtn').on('click', function(){
-					$('#nameStatusArea').empty();
+				
+				// quiz02 중복확인
+				$('#checkDuplicationBin').on('click', function(){
+					// alert("클릭")
 					
 					let url = $('#url').val().trim();
-					
 					if(url == ''){
-						$('#nameStatusArea').append('<span class="text-danger">주소를 적어주세요. </span>')
+						alert("검사할 URL을 입력해주세요");
 						return;
 					}
-					if(url.startsWith("http") == false && url.startsWith("https") == false){
-						$('#nameStatusArea').append('<span class="text-danger">주소 형식이 아닙니다. </span>')
-						return;
-					}
-					
 					
 					$.ajax({
-						type: "GET"
-						, url:"/lesson06/quiz02/is_duplication"
-						, data: {"url":url}
+						// request
+						type: "post"
+						, url: "/lesson06/quiz02/is_duplication"
+						, data: {"url": url}
 					
 						//response
-						,success: function(data){
-							if(data.is_duplication){
-								$('#nameStatusArea').append('<span class="text-danger">중복입니다. </span>')
+						// json 형태로 data를 받게 되면 json String을 파싱해서 object형으로 내려오게 된다. 
+						, success: function(data){
+							if(data.result){
+								//중복일 떄 
+								$('#duplicationText').removeClass('d-none')
+								$('#availableUrlText').addClass('d-none')
+							}else{
+								//중복이 아닐 때 => 사용 가능
+								$('#availableUrlText').removeClass('d-none')
+								$('#duplicationText').addClass('d-none')
 							}
+							
 						}
-						, error: function(e){
-							alert("에러");
+						, error: function(e)	{
+							alert("중복확인에 실패했습니다. 관리자에게 문의해주세요");
 						}
-					
+						
 					});
+					
 				});
-				
-
-				
-				// 주소 중복 검사
-				
 		});
 	</script>
 </body>

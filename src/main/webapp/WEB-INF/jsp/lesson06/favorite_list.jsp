@@ -39,14 +39,16 @@
 					<th>No.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${favorites}" var="favorite">
 				<tr>
-					<td>${favorite.id }</td>
-					<td>${favorite.name }</td>
+					<td>${favorite.id}</td>
+					<td>${favorite.name}</td>
 					<td>${favorite.url}</td>
+					<td><button type="button" class="del-btn btn btn-danger" data-favorite-id="${favorite.id}" >삭제</button> 
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -54,5 +56,32 @@
 		</table>
 		
 	 </div>
+	 
+	 <script>
+	 // value="${favorite.id}""
+	 $(document).ready(function(){
+		 $('.del-btn').on('click', function(){
+			 // 태그:data-fav
+			 let id = $(this).data("favorite-id");
+		 
+		 
+		 	$.ajax({
+			 	type: "post"
+			 	, url: "/lesson06/quiz02/delete_favorite"
+			 	, data: {"id": id}
+			 	, success: function(data){
+						if(data.result == 'success'){
+						location.reload();
+						}else{
+							alert(data.errorMessage);
+							}
+						}
+			 	,error : function(e) {
+						alert("삭제하는데 실패했습니다.");
+						}
+					});
+				});
+			});
+		</script>
 </body>
 </html>
