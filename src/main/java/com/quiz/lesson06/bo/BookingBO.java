@@ -29,4 +29,9 @@ public class BookingBO {
 		
 		return bookingDAO.insertBooking(name, date, day, headcount, phoneNumber);
 	}
+	
+	public Booking getBookingByNameAndPhoneNumber(String name, String phoneNumber) {
+		
+		return bookingDAO.selectBookingByNameAndPhoneNumber(name, phoneNumber);
+	}
 }
